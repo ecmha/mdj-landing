@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MDJ — Méditation du Jour</title>
+  <link rel="shortcut icon" href="./favicon.png" />
+  <link rel="icon" type="image/png" href="./favicon.png" />
+  <meta name="description" content="Commencez chaque journée avec une méditation inspirante. MDJ vous apporte des messages spirituels quotidiens directement sur votre téléphone." />
+
+  <!-- Canonical — update to your production domain -->
+  <link rel="canonical" href="https://mdjapp.brankoostudio.com/" />
+
+  <!-- Open Graph -->
+  <meta property="og:type"        content="website" />
+  <meta property="og:url"         content="https://mdjapp.brankoostudio.com/" />
+  <meta property="og:title"       content="MDJ — Méditation du Jour" />
+  <meta property="og:description" content="Commencez chaque journée avec une méditation inspirante. MDJ vous apporte des messages spirituels quotidiens directement sur votre téléphone." />
+  <meta property="og:image"       content="https://mdjapp.brankoostudio.com/app_logo.png" />
+  <meta property="og:locale"      content="fr_FR" />
+  <meta property="og:site_name"   content="MDJ — Méditation du Jour" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card"        content="summary_large_image" />
+  <meta name="twitter:title"       content="MDJ — Méditation du Jour" />
+  <meta name="twitter:description" content="Commencez chaque journée avec une méditation inspirante. MDJ vous apporte des messages spirituels quotidiens directement sur votre téléphone." />
+  <meta name="twitter:image"       content="https://mdjapp.brankoostudio.com/app_logo.png" />
+
+  <!-- Structured data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "MobileApplication",
+    "name": "MDJ — Méditation du Jour",
+    "description": "Commencez chaque journée avec une méditation inspirante. MDJ vous apporte des messages spirituels quotidiens directement sur votre téléphone.",
+    "url": "https://mdjapp.brankoostudio.com/",
+    "applicationCategory": "LifestyleApplication",
+    "operatingSystem": "iOS, Android",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "EUR"
+    },
+    "author": {
+      "@type": "Organization",
+      "name": "Eglise du Christ · Mission Harris (ECMHA)"
+    },
+    "inLanguage": ["fr", "en"]
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <header class="navbar">
+    <div class="container navbar__inner">
+      <a href="#" class="navbar__logo">
+        <img src="./app_logo.png" alt="MDJ Logo" height="44" />
+      </a>
+      <nav class="navbar__links">
+        <a href="#features" data-i18n="nav.features">Fonctionnalités</a>
+        <a href="#about" data-i18n="nav.about">À propos</a>
+        <a href="#download" class="btn btn--outline" data-i18n="nav.download">Télécharger</a>
+      </nav>
+      <button class="lang-toggle" id="langToggle" aria-label="Switch language">
+        <span class="lang-toggle__flag" id="langFlag">🇬🇧</span>
+        <span class="lang-toggle__label" id="langLabel">EN</span>
+      </button>
+      <button class="navbar__burger" id="burger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="navbar__mobile" id="mobileMenu">
+      <a href="#features" data-i18n="nav.features">Fonctionnalités</a>
+      <a href="#about" data-i18n="nav.about">À propos</a>
+      <a href="#download" data-i18n="nav.download">Télécharger</a>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero" id="home">
+    <div class="hero__bg-shapes">
+      <div class="shape shape--1"></div>
+      <div class="shape shape--2"></div>
+      <div class="shape shape--3"></div>
+    </div>
+    <div class="container hero__inner">
+      <div class="hero__text">
+        <span class="hero__badge" data-i18n="hero.badge">Méditation quotidienne</span>
+        <h1 class="hero__title" data-i18n="hero.title">
+          Commencez chaque journée avec <span class="gradient-text">sagesse et paix</span>
+        </h1>
+        <p class="hero__subtitle" data-i18n="hero.subtitle">
+          MDJ vous apporte une méditation spirituelle chaque matin, directement sur votre téléphone. Nourrissez votre âme, chaque jour.
+        </p>
+        <div class="hero__cta">
+          <a href="#download" class="btn btn--primary" data-i18n="hero.cta_primary">Télécharger gratuitement</a>
+          <a href="#features" class="btn btn--ghost" data-i18n="hero.cta_secondary">Découvrir →</a>
+        </div>
+        <p class="hero__note" data-i18n="hero.note">Gratuit · iOS & Android · ECMHA</p>
+      </div>
+      <div class="hero__visual">
+        <div class="phone-mockup">
+          <div class="phone-mockup__screen">
+            <div class="mock-screen">
+              <div class="mock-header">
+                <div class="mock-logo">
+                  <img src="../MDJ Blanc.png" alt="MDJ" height="28" />
+                </div>
+              </div>
+              <div class="mock-date" id="mockDate"></div>
+              <div class="mock-card">
+                <div class="mock-card__tag" data-i18n="mock.tag">Méditation du jour</div>
+                <div class="mock-card__title" data-i18n="mock.verse_ref">Jean 15:5</div>
+                <div class="mock-card__quote" data-i18n="mock.verse">
+                  « Je suis le cep, vous êtes les sarments. »
+                </div>
+                <div class="mock-card__preview" data-i18n="mock.content">
+                  Demeurez en moi et je demeurerai en vous...
+                </div>
+              </div>
+              <div class="mock-notif">
+                <div class="mock-notif__icon">🔔</div>
+                <div class="mock-notif__text" data-i18n="mock.notif">Nouvelle méditation disponible</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="hero__glow"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS STRIP -->
+  <section class="stats">
+    <div class="container stats__inner">
+      <div class="stat">
+        <span class="stat__number">365</span>
+        <span class="stat__label" data-i18n="stats.messages">Méditations / an</span>
+      </div>
+      <div class="stat__divider"></div>
+      <div class="stat">
+        <span class="stat__number">2</span>
+        <span class="stat__label" data-i18n="stats.languages">Langues</span>
+      </div>
+      <div class="stat__divider"></div>
+      <div class="stat">
+        <span class="stat__number">100%</span>
+        <span class="stat__label" data-i18n="stats.free">Gratuit</span>
+      </div>
+      <div class="stat__divider"></div>
+      <div class="stat">
+        <span class="stat__number">iOS + Android</span>
+        <span class="stat__label" data-i18n="stats.platforms">Plateformes</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURES -->
+  <section class="features" id="features">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag" data-i18n="features.tag">Fonctionnalités</span>
+        <h2 class="section-title" data-i18n="features.title">Tout ce qu'il vous faut pour votre croissance spirituelle</h2>
+      </div>
+      <div class="features__grid">
+
+        <div class="feature-card">
+          <div class="feature-card__icon feature-card__icon--blue">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+              <path d="M2 17l10 5 10-5"/>
+              <path d="M2 12l10 5 10-5"/>
+            </svg>
+          </div>
+          <h3 data-i18n="features.daily.title">Méditation quotidienne</h3>
+          <p data-i18n="features.daily.desc">Un nouveau message spirituel chaque jour, soigneusement préparé par les prédicateur de l'ECMHA.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-card__icon feature-card__icon--orange">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/>
+              <path d="M13.73 21a2 2 0 0 1-3.46 0"/>
+            </svg>
+          </div>
+          <h3 data-i18n="features.notif.title">Notifications push</h3>
+          <p data-i18n="features.notif.desc">Recevez chaque matin un rappel pour commencer votre journée dans la prière et la méditation.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-card__icon feature-card__icon--gold">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="10"/>
+              <polyline points="12 6 12 12 16 14"/>
+            </svg>
+          </div>
+          <h3 data-i18n="features.archive.title">Archive des messages</h3>
+          <p data-i18n="features.archive.desc">Retrouvez et relisez les méditations passées à tout moment, même sans connexion internet.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-card__icon feature-card__icon--blue">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="10"/>
+              <line x1="2" y1="12" x2="22" y2="12"/>
+              <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+            </svg>
+          </div>
+          <h3 data-i18n="features.bilingual.title">Bilingue FR / EN</h3>
+          <p data-i18n="features.bilingual.desc">L'application est disponible en français et en anglais pour toucher toute la communauté.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-card__icon feature-card__icon--orange">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+            </svg>
+          </div>
+          <h3 data-i18n="features.free.title">100% gratuit</h3>
+          <p data-i18n="features.free.desc">Aucun abonnement, aucune publicité. MDJ est un service offert librement par l'ECMHA.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-card__icon feature-card__icon--gold">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+            </svg>
+          </div>
+          <h3 data-i18n="features.feedback.title">Partagez vos suggestions</h3>
+          <p data-i18n="features.feedback.desc">Envoyez vos remarques et encouragements directement à l'équipe pastorale depuis l'application.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="about" id="about">
+    <div class="container about__inner">
+      <div class="about__visual">
+        <div class="about__cards">
+          <div class="about__card about__card--front">
+            <div class="about__card-icon">📖</div>
+            <div class="about__card-title" data-i18n="about.card1.title">Message du jour</div>
+            <div class="about__card-body" data-i18n="about.card1.body">Jean 3:16 — Car Dieu a tant aimé le monde...</div>
+          </div>
+          <div class="about__card about__card--back">
+            <div class="about__card-icon">🌅</div>
+            <div class="about__card-title" data-i18n="about.card2.title">Nouvelle journée</div>
+            <div class="about__card-body" data-i18n="about.card2.body">Commencez avec intention et foi.</div>
+          </div>
+        </div>
+      </div>
+      <div class="about__text">
+        <span class="section-tag" data-i18n="about.tag">À propos</span>
+        <h2 class="section-title" data-i18n="about.title">Une initiative pastorale de l'ECMHA</h2>
+        <p data-i18n="about.p1">
+          L'<strong>Eglise du Christ · Mission Harris (ECMHA)</strong> a développé MDJ pour permettre à sa communauté de rester connectée à la Parole de Dieu, où qu'elle se trouve.
+        </p>
+        <p data-i18n="about.p2">
+          Chaque jour, nos prédicateurs préparent un message spirituel enrichissant, accompagné d'un verset biblique et d'une réflexion approfondie — le tout livré directement dans votre poche.
+        </p>
+        <div class="about__values">
+          <div class="about__value">
+            <span class="about__value-icon">✦</span>
+            <span data-i18n="about.val1">Fondé sur la Parole</span>
+          </div>
+          <div class="about__value">
+            <span class="about__value-icon">✦</span>
+            <span data-i18n="about.val2">Porté par la communauté</span>
+          </div>
+          <div class="about__value">
+            <span class="about__value-icon">✦</span>
+            <span data-i18n="about.val3">Offert avec amour</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DOWNLOAD -->
+  <section class="download" id="download">
+    <div class="download__bg">
+      <div class="shape shape--d1"></div>
+      <div class="shape shape--d2"></div>
+    </div>
+    <div class="container download__inner">
+      <img src="./app_logo_white.png" alt="MDJ" class="download__logo" height="80" />
+      <h2 class="download__title" data-i18n="download.title">Prêt à commencer ?</h2>
+      <p class="download__subtitle" data-i18n="download.subtitle">
+        Téléchargez MDJ gratuitement et rejoignez des milliers de croyants qui commencent leur journée dans la Parole.
+      </p>
+      <div class="download__buttons">
+        <a href="#" class="store-btn">
+          <svg class="store-btn__icon" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
+          </svg>
+          <div class="store-btn__text">
+            <span class="store-btn__sub" data-i18n="download.appstore_sub">Disponible sur</span>
+            <span class="store-btn__name">App Store</span>
+          </div>
+        </a>
+        <a href="#" class="store-btn">
+          <svg class="store-btn__icon" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M3.18 23.76c.3.17.64.22.99.14l12.47-7.18-2.61-2.61-10.85 9.65zM.89 1.43C.34 1.76 0 2.36 0 3.14v17.72c0 .78.34 1.38.89 1.71l.09.05 9.92-9.92v-.23L.98 2.55l-.09.05-.01-.09.01.02zM20.6 10.59l-2.66-1.53-2.94 2.94 2.94 2.94 2.67-1.54c.76-.44.76-1.37-.01-1.81zM3.18.24l12.47 7.19-2.61 2.61L2.19.39 3.18.24z"/>
+          </svg>
+          <div class="store-btn__text">
+            <span class="store-btn__sub" data-i18n="download.google_sub">Disponible sur</span>
+            <span class="store-btn__name">Google Play</span>
+          </div>
+        </a>
+      </div>
+      <p class="download__note" data-i18n="download.note">Gratuit · Aucune carte requise · Aucune publicité</p>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container footer__inner">
+      <div class="footer__brand">
+        <img src="./app_logo.png" alt="MDJ" height="36" />
+        <p data-i18n="footer.tagline">Méditation du Jour — ECMHA</p>
+      </div>
+      <div class="footer__links">
+        <a href="#features" data-i18n="nav.features">Fonctionnalités</a>
+        <a href="#about" data-i18n="nav.about">À propos</a>
+        <a href="#download" data-i18n="nav.download">Télécharger</a>
+        <a href="cgu.html" data-i18n="footer.cgu">CGU</a>
+        <a href="privacy.html" data-i18n="footer.privacy">Confidentialité</a>
+      </div>
+      <p class="footer__copy">
+        © <span id="year"></span> ECMHA · <span data-i18n="footer.rights">Tous droits réservés</span>
+      </p>
+      <p class="footer__copy">
+        With ❤️ by <a href="https://www.brankoostudio.com" target="_blank" rel="noopener" data-i18n="footer.branco"> Brankoo Studio </a>
+      </p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
