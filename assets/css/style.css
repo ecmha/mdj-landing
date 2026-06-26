@@ -660,6 +660,10 @@ img { max-width: 100%; display: block; }
 .store-btn__text { display: flex; flex-direction: column; text-align: left; }
 .store-btn__sub  { font-size: 0.68rem; opacity: 0.65; }
 .store-btn__name { font-size: 1rem; font-weight: 700; }
+.store-btn--disabled {
+  opacity: 0.5;
+  pointer-events: none;
+}
 
 .download__note {
   font-size: 0.8rem;
