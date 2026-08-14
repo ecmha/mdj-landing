@@ -1,6 +1,6 @@
 # MDJ — Landing Page
 
-Static landing page for the **Méditation du Jour (MDJ)** mobile app, published at [mdjapp.brankoostudio.com](https://mdjapp.brankoostudio.com).
+Static landing page for the **Méditation du Jour (MDJ)** mobile app, published at [mdjapp.brankoostudio.com](https://mdj.brankoostudio.com).
 
 Developed and maintained by [Brankoo Studio](https://www.brankoostudio.com) for **Eglise du Christ · Mission Harris (ECMHA)**.
 
@@ -8,11 +8,11 @@ Developed and maintained by [Brankoo Studio](https://www.brankoostudio.com) for 
 
 ## Pages
 
-| File | URL | Description |
-|---|---|---|
-| `index.html` | `/` | Main landing page |
-| `cgu.html` | `/cgu.html` | Terms of Use (CGU) |
-| `privacy.html` | `/privacy.html` | Privacy Policy |
+| File           | URL             | Description        |
+| -------------- | --------------- | ------------------ |
+| `index.html`   | `/`             | Main landing page  |
+| `cgu.html`     | `/cgu.html`     | Terms of Use (CGU) |
+| `privacy.html` | `/privacy.html` | Privacy Policy     |
 
 ---
 
@@ -52,7 +52,7 @@ To add a new translatable string:
 - `<meta name="description">` on all pages
 - Open Graph and Twitter Card tags on the homepage
 - JSON-LD `MobileApplication` structured data
-- Canonical URLs pointing to `https://mdjapp.brankoostudio.com`
+- Canonical URLs pointing to `https://mdj.brankoostudio.com`
 - `robots.txt` and `sitemap.xml`
 - CGU and Privacy pages are marked `noindex` (legal pages, not meant to rank)
 
