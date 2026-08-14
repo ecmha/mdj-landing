@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://mdjapp.brankoostudio.com/sitemap.xml
+Sitemap: https://mdj.brankoostudio.com/sitemap.xml

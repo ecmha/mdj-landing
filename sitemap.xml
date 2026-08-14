@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://mdjapp.brankoostudio.com/</loc>
+    <loc>https://mdj.brankoostudio.com/</loc>
     <lastmod>2026-06-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://mdjapp.brankoostudio.com/cgu.html</loc>
+    <loc>https://mdj.brankoostudio.com/cgu.html</loc>
     <lastmod>2026-06-16</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://mdjapp.brankoostudio.com/privacy.html</loc>
+    <loc>https://mdj.brankoostudio.com/privacy.html</loc>
     <lastmod>2026-06-27</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
