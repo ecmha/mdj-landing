@@ -1,0 +1,82 @@
+name: Prepare release
+
+# Run this BEFORE creating the GitHub release, so the tagged commit already
+# carries the right version. It opens a PR bumping version.txt; merge that,
+# then create the release on the merged commit and the CI workflow builds and
+# publishes the image.
+
+on:
+    workflow_dispatch:
+        inputs:
+            version:
+                description: "Version to release, e.g. v1.2.3"
+                required: true
+                type: string
+
+# Granted here rather than through the repository settings: the "Workflow
+# permissions" setting is only the default, and a workflow may raise it.
+# The one thing this file cannot grant is "Allow GitHub Actions to create and
+# approve pull requests" (Settings > Actions > General) — gh pr create returns
+# 403 while that is off, whatever permissions say.
+permissions:
+    contents: write # push the release branch
+    pull-requests: write # open the PR
+
+jobs:
+    bump:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout main
+              uses: actions/checkout@v4
+              with:
+                  ref: main
+
+            - name: Bump version.txt and open a pull request
+              env:
+                  GH_TOKEN: ${{ github.token }}
+                  INPUT_VERSION: ${{ inputs.version }}
+              run: |
+                  # accept either 1.2.3 or v1.2.3
+                  tag="$INPUT_VERSION"
+                  case "$tag" in v*) ;; *) tag="v$tag" ;; esac
+
+                  if ! printf '%s' "$tag" | grep -Eq '^v[0-9]+\.[0-9]+\.[0-9]+$'; then
+                      echo "::error::Version '$INPUT_VERSION' does not match the expected vX.X.X pattern"
+                      exit 1
+                  fi
+
+                  version="${tag#v}"
+                  current=$(cat version.txt)
+                  if [ "$current" = "$version" ]; then
+                      echo "::notice::version.txt is already at $version — create the release on $tag directly"
+                      exit 0
+                  fi
+
+                  branch="chore/release-$tag"
+                  git checkout -b "$branch"
+                  echo "$version" > version.txt
+
+                  git config user.name "github-actions[bot]"
+                  git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+                  git commit -aqm "chore(release): bump version to $version"
+                  # force, so re-running for the same version updates the branch
+                  git push -fu origin "$branch"
+
+                  if [ -n "$(gh pr list --head "$branch" --state open --json number --jq '.[].number')" ]; then
+                      echo "::notice::PR for $branch already open, updated it"
+                      exit 0
+                  fi
+
+                  body=$(printf '%s\n' \
+                    "Bumps \`version.txt\` to \`$version\` ahead of the $tag release." \
+                    "" \
+                    "Merge this, then create the GitHub release on tag \`$tag\` from main." \
+                    "Publishing that release builds the Docker image and pushes \`$version\` and \`latest\`." \
+                    "" \
+                    "Opened by the Prepare release workflow.")
+
+                  gh pr create \
+                    --base main \
+                    --head "$branch" \
+                    --title "chore(release): bump version to $version" \
+                    --body "$body"
