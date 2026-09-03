@@ -1,0 +1,70 @@
+name: Sync version to release tag
+
+on:
+    release:
+        types: [published]
+    workflow_dispatch:
+        inputs:
+            version:
+                description: "Version to sync main to, e.g. v1.2.3"
+                required: true
+                type: string
+
+permissions:
+    contents: write # commit the version bump to main
+
+# two releases published back to back must not race for main
+concurrency:
+    group: sync-version
+    cancel-in-progress: false
+
+jobs:
+    sync:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout main
+              uses: actions/checkout@v4
+              with:
+                  ref: main
+                  # full history so a rebase is possible if main moves under us
+                  fetch-depth: 0
+
+            - name: Sync version.txt to the released tag
+              env:
+                  # the release tag is the source of truth; the input is for a manual re-sync
+                  INPUT_VERSION: ${{ github.event.release.tag_name || inputs.version }}
+              run: |
+                  # accept either 1.2.3 or v1.2.3
+                  tag="$INPUT_VERSION"
+                  case "$tag" in v*) ;; *) tag="v$tag" ;; esac
+
+                  if ! printf '%s' "$tag" | grep -Eq '^v[0-9]+\.[0-9]+\.[0-9]+$'; then
+                      echo "::error::Version '$INPUT_VERSION' does not match the expected vX.Y.Z pattern"
+                      exit 1
+                  fi
+
+                  version="${tag#v}"
+                  current=$(cat version.txt)
+                  if [ "$current" = "$version" ]; then
+                      echo "::notice::main is already at $version — nothing to sync"
+                      exit 0
+                  fi
+
+                  git config user.name "github-actions[bot]"
+                  git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+                  printf '%s\n' "$version" > version.txt
+                  git commit -aqm "chore(release): sync version.txt to $version"
+
+                  # main may have moved between checkout and push; rebase and retry
+                  for attempt in 1 2 3; do
+                      if git push origin HEAD:main; then
+                          echo "::notice::main synced to $version"
+                          exit 0
+                      fi
+                      echo "::warning::push rejected (attempt $attempt) — rebasing onto origin/main"
+                      git pull --rebase origin main
+                  done
+
+                  echo "::error::could not push the version sync to main after 3 attempts"
+                  exit 1
