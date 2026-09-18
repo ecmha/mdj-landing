@@ -13,6 +13,7 @@ Developed and maintained by [Brankoo Studio](https://www.brankoostudio.com) for 
 | `index.html`   | `/`             | Main landing page  |
 | `cgu.html`     | `/cgu.html`     | Terms of Use (CGU) |
 | `privacy.html` | `/privacy.html` | Privacy Policy     |
+| `reset-password.html` | `/reset-password.html` | Hands an emailed password reset token (`#token=…`) to the mobile app via `mdj://reset-password?token=…`. Not indexed. |
 
 ---
 
