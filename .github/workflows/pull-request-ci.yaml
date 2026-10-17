@@ -1,8 +1,6 @@
 name: pull request validation
 
 on:
-    release:
-        types: [published]
     pull_request:
         branches:
             - main
