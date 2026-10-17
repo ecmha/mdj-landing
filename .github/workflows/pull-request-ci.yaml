@@ -1,0 +1,23 @@
+name: pull request validation
+
+on:
+    release:
+        types: [published]
+    pull_request:
+        branches:
+            - main
+
+permissions:
+    contents: read
+
+jobs:
+    # PRs to main only prove the image builds; nothing is published.
+    validate:
+        if: github.event_name == 'pull_request'
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout the codebase
+              uses: actions/checkout@v4
+
+            - name: Build docker image
+              run: docker build -t mdj-landing:pr-${{ github.event.pull_request.number }} .
